@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# Exercise Introduction
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This exercise is a **simple chat window** that shows 2 chat boxes for the
+two existing users - Amy and John.
+
+The aim of this practice exercise is to help cement the understanding of:
+
+- where to put state
+- how to update and access state
+- when to use stateless functional components
+- how to use controlled components
+
+## Task
+
+- A starter template with dummy data was given.
+- Add interactivity to the app by refactoring the static code in the given template.
+- The messages they send to each other should appear in both chat boxes.
+- On Amy's screen, her messages should appear in green and John's messages should appear in blue.
+- On John's screen, his messages should appear in green and Amy's messages should appear in blue.
+- If the input box is empty, the "Send" button should be disabled.
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `yarn start`
+`yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The page will reload if you make edits, and you will also see any lint errors in the console.
 
-### `yarn test`
+# Facts about State Management in React
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### _State management is at the heart of React._
 
-### `yarn build`
+> It allows us to have a single source of truth for our entire application.\
+> That means that we don't need to make sure
+> that our data is synched across multiple components; React does it for us. It
+> happens via unidirectional data flow: parent components pass properties to
+> child components as props.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### _State cannot be modified outside of the component in which it is declared._
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+> If a child component needs to pass some data back up to the parent (e.g. a
+> form that conveys the new user information to the component that holds that the
+> users piece of state), we'll need to pass callbacks from the component that holds
+> state all the way down to the required component. By calling those callbacks, child
+> components are able to pass data to back up to their parents, which are able to
+> modify their state. Props can go through multiple components to get to the
+> component they ultimately need to reach.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### _Steps To Considerer When 'Thinking React'_:
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- _Step 1:_ Break down the app into a hierarchy of components. Draw a box around each React component.
+- _Step 2:_ Determine the data in our app.
+- _Step 3:_ Figure out the data that should be a part of our state.
+- _Step 4:_ Identify where each piece of state lives.
+- _Step 5:_ Add Inverse Data Flow.
