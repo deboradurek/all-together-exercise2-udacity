@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class SendMessage extends Component {
+  static propTypes = {
+    onSendMessage: PropTypes.func.isRequired,
+  };
+
   state = {
     textInput: '',
   };
@@ -12,6 +16,11 @@ class SendMessage extends Component {
     this.setState({
       textInput: value,
     });
+  };
+
+  isDisabled = () => {
+    const { textInput } = this.state;
+    return textInput === '';
   };
 
   render() {
@@ -29,7 +38,9 @@ class SendMessage extends Component {
             onChange={this.handleInputChange}
           />
           <div className="input-group-append">
-            <button className="btn submit-button">SEND</button>
+            <button className="btn submit-button" disabled={this.isDisabled()}>
+              SEND
+            </button>
           </div>
         </form>
       </div>
