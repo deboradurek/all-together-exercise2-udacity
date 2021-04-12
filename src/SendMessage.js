@@ -6,6 +6,14 @@ class SendMessage extends Component {
     textInput: '',
   };
 
+  handleInputChange = (event) => {
+    const { value } = event.target;
+
+    this.setState({
+      textInput: value,
+    });
+  };
+
   render() {
     const { textInput } = this.state;
 
@@ -18,6 +26,7 @@ class SendMessage extends Component {
             placeholder="Enter your message..."
             name="message"
             value={textInput}
+            onChange={this.handleInputChange}
           />
           <div className="input-group-append">
             <button className="btn submit-button">SEND</button>
