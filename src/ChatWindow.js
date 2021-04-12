@@ -7,6 +7,12 @@ class ChatWindow extends Component {
     messages: [],
   };
 
+  handleSendMessage = (username) => (text) => {
+    this.setState((currentState) => ({
+      messages: [...currentState.messages, { username, text }],
+    }));
+  };
+
   render() {
     const users = [{ username: 'Amy' }, { username: 'John' }];
     const { messages } = this.state;
@@ -20,7 +26,7 @@ class ChatWindow extends Component {
 
             <MessageList messages={messages} user={user} />
 
-            <SendMessage />
+            <SendMessage onSendMessage={this.handleSendMessage(user.username)} />
           </div>
         ))}
       </div>
