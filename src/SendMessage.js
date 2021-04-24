@@ -18,6 +18,16 @@ class SendMessage extends Component {
     });
   };
 
+  sendMessage = (event) => {
+    event.preventDefault();
+
+    this.props.onSendMessage(this.state.textInput);
+
+    this.setState({
+      textInput: '',
+    });
+  };
+
   isDisabled = () => {
     const { textInput } = this.state;
     return textInput === '';
@@ -28,7 +38,7 @@ class SendMessage extends Component {
 
     return (
       <div>
-        <form className="input-group">
+        <form className="input-group" onSubmit={this.sendMessage}>
           <input
             type="text"
             className="form-control"
